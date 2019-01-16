@@ -78,9 +78,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	// CREATING CARDS
 	var card1 = new Card('New task');
 	var card2 = new Card('Create kanban boards');
+  var card3 = new Card('Spaghetti');
 
 	// ADDING CARDS TO COLUMNS
 	todoColumn.addCard(card1);
+  doingColumn.addCard(card3);
 	doneColumn.addCard(card2);
     
 });
