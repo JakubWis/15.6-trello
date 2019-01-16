@@ -1,0 +1,50 @@
+{
+  "name": "9-project-",
+  "version": "1.0.0",
+  "description": "https://jakubwis.github.io/9-project-/",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm-run-all test:*",
+    "test:html": "globstar nu-html-checker *.html",
+    "init-project": "npm install && npm-run-all init:*",
+    "init:dirs": "mkdirp sass css vendor images js",
+    "init:files": "touch README.md index.html sass/style.scss js/script.js",
+    "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "build": "npm-run-all build:* test",
+    "build:clean": "rimraf css",
+    "build:sass": "node-sass --output-style compact -o css sass",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch": "npm-run-all build -p watch:*",
+    "watch:browser-sync": "browser-sync start --server --files css/style.css index.html",
+    "sassprefixer-sass": "node-sass sass/style.scss css/style.css",
+    "sassprefixer-autoprefixer": "autoprefixer-cli css/style.css",
+    "watch:sassprefixer": "onchange sass -- npm-run-all sassprefixer-sass sassprefixer-autoprefixer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakubWis/9-project-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakubWis/9-project-/issues"
+  },
+  "homepage": "https://github.com/JakubWis/9-project-#readme",
+  "devDependencies": {
+    "autoprefixer-cli": "^1.0.0",
+    "browser-sync": "^2.26.3",
+    "globstar": "^1.0.0",
+    "node-sass": "^4.10.0",
+    "nu-html-checker": "^0.1.0",
+    "onchange": "^5.1.1"
+  },
+  "dependencies": {
+    "chart.js": "^2.7.3",
+    "flickity-hash": "^1.0.3",
+    "mkdirp": "^0.5.1",
+    "mustache": "^3.0.1",
+    "npm-run-all": "^4.1.3"
+  }
+}
